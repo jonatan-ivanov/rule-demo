@@ -1,0 +1,20 @@
+apply plugin: 'java-library'
+apply plugin: 'idea'
+
+sourceCompatibility = 11
+targetCompatibility = 11
+
+repositories {
+    mavenCentral()
+}
+dependencies {
+    compileOnly 'org.projectlombok:lombok:1.+'
+
+    testImplementation 'org.junit.jupiter:junit-jupiter-engine:5.+'
+    testImplementation 'org.assertj:assertj-core:3.+'
+}
+
+wrapper {
+    distributionType = Wrapper.DistributionType.ALL
+    gradleVersion = new groovy.json.JsonSlurper().parseText('https://services.gradle.org/versions/current'.toURL().text).version
+}
